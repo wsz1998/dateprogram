@@ -14,8 +14,10 @@ public class UserServiceImpl implements UserService{
         boolean flag = false;
         try{
             UserDaoImpl userDao = new UserDaoImpl(dbc.getConnection());
-            if(!userDao.find(user)){
+            if(userDao.find(user)==false){
                 userDao.userRigister(user);
+            }else{
+                System.out.println("×¢²áÊ§°Ü");
             }
         }catch (Exception e){
             throw e;

@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LeaveDaoImpl implements LeaveDao {
     private Connection con;
@@ -45,12 +47,84 @@ public class LeaveDaoImpl implements LeaveDao {
     }
 
     @Override
-    public boolean findAll() throws SQLException {
-        return false;
+    public List<Leave> findAll() throws SQLException {
+        List<Leave> list = new ArrayList<>();
+        sql = "SELECT * FROM am_leave";
+        ps = con.prepareStatement(sql);
+        rs = this.ps.executeQuery();
+        while (rs.next()){
+            Leave leave = new Leave();
+            leave.setId(rs.getInt("id"));
+            leave.setUser_id(rs.getInt("user_id"));
+            leave.setDate(rs.getString("date"));
+            leave.setStart(rs.getString("start"));
+            leave.setEnd(rs.getString("end"));
+            leave.setSite(rs.getString("site"));
+            leave.setType(rs.getInt("type"));
+            leave.setReason(rs.getString("reason"));
+            leave.setIsExigency(rs.getInt("isExigency"));
+            leave.setAuditor_id(rs.getInt("auditor_id"));
+            leave.setRejection(rs.getString("rejection"));
+            leave.setStatus(rs.getInt("status"));
+            list.add(leave);
+        }
+        return list;
     }
 
     @Override
-    public boolean find(int type) throws SQLException {
-        return false;
+    public List<Leave> find(int type) throws SQLException {
+        List<Leave> list = new ArrayList<>();
+        sql = "SELECT * FROM am_leave where type "+type;
+        ps = con.prepareStatement(sql);
+        rs = this.ps.executeQuery();
+        while (rs.next()){
+            Leave leave = new Leave();
+            leave.setId(rs.getInt("id"));
+            leave.setUser_id(rs.getInt("user_id"));
+            leave.setDate(rs.getString("date"));
+            leave.setStart(rs.getString("start"));
+            leave.setEnd(rs.getString("end"));
+            leave.setSite(rs.getString("site"));
+            leave.setType(rs.getInt("type"));
+            leave.setReason(rs.getString("reason"));
+            leave.setIsExigency(rs.getInt("isExigency"));
+            leave.setAuditor_id(rs.getInt("auditor_id"));
+            leave.setRejection(rs.getString("rejection"));
+            leave.setStatus(rs.getInt("status"));
+            list.add(leave);
+        }
+        return list;
+    }
+
+    @Override
+    public int getAllCount() throws SQLException {
+        int count = 0;
+        sql = "SELECT COUNT(*) FROM am_leave";
+        try{
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    @Override
+    public int getTypeCount(int type) throws SQLException {
+        int count = 0;
+        sql = "SELECT COUNT(*) FROM am_leave WHERE type"+type;
+        try{
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return count;
     }
 }

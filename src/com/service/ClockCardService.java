@@ -1,9 +1,11 @@
 package com.service;
 
 import com.bean.ClockCard;
+import com.bean.Leave;
 import com.dao.ClockCardDao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface ClockCardService {
     /**
@@ -18,13 +20,13 @@ public interface ClockCardService {
      * @return boolean  :  true   查询成功  false  查询失败
      * @throws SQLException
      */
-    public boolean findMyCard() throws SQLException;
+    public List<Leave> findMyCard(int id,int currentPage) throws SQLException;
     /**
      * 查询所有人打卡情况（admin 专属）
      * @return boolean  :  true   查询成功  false  查询失败
      * @throws SQLException
      */
-    public boolean findAllCard() throws SQLException;
+    public List<Leave> findAllCard(int currentPage) throws SQLException;
 
     /**
      * 判断是否迟到，矿工

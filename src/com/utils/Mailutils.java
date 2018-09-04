@@ -28,7 +28,7 @@ public class Mailutils {
         Session session = Session.getInstance(props, auth);
 // 2.创建一个Message，它相当于是邮件内容
         Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("1210411628@qq.com")); // 设置发送者
+        message.setFrom(new InternetAddress("185829931@qq.com")); // 设置发送者
         message.setRecipient(RecipientType.TO, new InternetAddress(email)); // 设置发送方式与接收者
         message.setSubject("用户激活");
 // message.setText("这是一封激活邮件，请<a href='#'>点击</a>");

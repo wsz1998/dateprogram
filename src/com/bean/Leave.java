@@ -1,18 +1,18 @@
 package com.bean;
 
 public class Leave {
-    private int id;
-    private int user_id;
-    private String date;
-    private String start;
-    private String end;
-    private String site;
-    private String reason;
-    private String rejection;
-    private int type;
-    private int isExigency;
-    private int status;
-    private int auditor_id;
+    private int id;        //请假数
+    private int user_id;   //请假人编号
+    private String date;   //请假时间
+    private String start;  //请假起始日期
+    private String end;    //请假结束日期
+    private String site;   //出差地点（请假不用写）
+    private String reason; //原因
+    private String rejection;//拒绝原因
+    private int type;      //事假、病假、出差
+    private int isExigency;//是否紧急
+    private int status;    //是否已处理
+    private int auditor_id;//处理人id
     public Leave(){
         this.status = 0;
         this.isExigency = 0;

@@ -2,14 +2,18 @@ package com.service.Impl;
 
 import com.bean.ClockCard;
 import com.bean.DatabaseConnection;
+import com.bean.Leave;
+import com.bean.PageBean;
 import com.dao.Impl.ClockCardDaoImpl;
 import com.service.ClockCardService;
 
 import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ClockCardServiceImpl implements ClockCardService{
     DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -27,13 +31,17 @@ public class ClockCardServiceImpl implements ClockCardService{
     }
 
     @Override
-    public boolean findMyCard() throws SQLException {
-        return false;
+    public List<Leave> findMyCard(int id,int currentPage) throws SQLException {
+        List<Leave> leaveList = new ArrayList<>();
+
+        return leaveList;
     }
 
     @Override
-    public boolean findAllCard() throws SQLException {
-        return false;
+    public List<Leave> findAllCard(int currentPage) throws SQLException {
+        List<Leave> leaveList = new ArrayList<>();
+        PageBean pageBean = new PageBean(currentPage,10,cldi.getAllCount());
+        return leaveList;
     }
 
     @Override

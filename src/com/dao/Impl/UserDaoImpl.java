@@ -82,18 +82,30 @@ public class UserDaoImpl implements UserDao{
         return flag;
     }
     public boolean find(User user)throws SQLException{
-        boolean flag = false;
+        boolean flag1 = false;
+        boolean flag2 = false;
+        boolean flag3 = false;
         try{
+
             sql = "SELECT * FROM am_user WHERE am_user_email='"+user.getEmail()+"'";
             ps = this.con.prepareStatement(sql);
             rs = this.ps.executeQuery();
+            flag1 = rs.next();
 
-            flag = rs.next();
+            sql = "SELECT * FROM am_user WHERE am_user_name='"+user.getName()+"'";
+            ps = this.con.prepareStatement(sql);
+            rs = this.ps.executeQuery();
+            flag2 = rs.next();
+
+            sql = "SELECT * FROM am_user WHERE am_user_phone='"+user.getName()+"'";
+            ps = this.con.prepareStatement(sql);
+            rs = this.ps.executeQuery();
+            flag2 = rs.next();
 
         }catch (Exception e){
             e.printStackTrace();
         }
-        return flag;
+        return (flag1||flag2||flag3);
     }
 
 }

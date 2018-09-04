@@ -4,6 +4,7 @@ import com.bean.Leave;
 import com.bean.User;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface LeaveService {
     /**
@@ -16,23 +17,23 @@ public interface LeaveService {
 
     /**
      * 查看出差情况
-     * @return boolean  :  true  查看成功  false  查看失败
+     * @return void
      * @throws SQLException
      */
-    public boolean findBusinessLeave() throws SQLException;
+    public List<Leave> findBusinessLeave() throws SQLException;
 
     /**
      * 查看请假情况
-     * @return boolean  :  true  查看成功  false  查看失败
+     * @return void
      * @throws SQLException
      */
-    public boolean findReasonLeave() throws SQLException;
+    public List<Leave> findReasonLeave() throws SQLException;
 
     /**
      * 查看当前申请进度
      * @param user
-     * @return boolean  :  true  查看成功  false 查看失败
+     * @return void
      * @throws SQLException
      */
-    public boolean findMyLeave(User user) throws SQLException;
+    public List<Leave> findMyLeave(User user) throws SQLException;
 }
